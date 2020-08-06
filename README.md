@@ -2,7 +2,7 @@
 this is an api created with NestJs using TypeORM and Postgres
 
 if you run this project need you install postgres and NestJs
-# install
+
 run yarn install
 
 You have create your .env with the .env.example
