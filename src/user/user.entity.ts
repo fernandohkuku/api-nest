@@ -3,7 +3,7 @@ import { Entity, PrimaryGeneratedColumn, CreateDateColumn, Column, BeforeInsert 
 import * as bcrypt from "bcryptjs"
 import * as jwt from "jsonwebtoken"
 
-@Entity()
+@Entity('user')
 export class UserEntity{
     @PrimaryGeneratedColumn('uuid')
     id:string;
