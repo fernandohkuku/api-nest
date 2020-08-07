@@ -1,9 +1,11 @@
 import { ValidationPipe } from './../shared/validation.pipe';
 import { IdeaDTO } from './idea.dto';
-import { Controller, Get, Post, Put, Delete, Body, Param, UsePipes, Logger } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Param, UsePipes, Logger, UseGuards } from '@nestjs/common';
 import { IdeaService } from './idea.service';
+import { AuthGuard } from '../shared/auth.guard';
+import {User} from "../user/user.decorator"
 
-@Controller('api/v1/idea')
+@Controller('api/v1/ideas')
 export class IdeaController {
     private logger = new Logger('IdeaController')
     constructor(private _ideaService:IdeaService){}
@@ -14,10 +16,11 @@ export class IdeaController {
     }
 
     @Post()
+    @UseGuards(new AuthGuard())
     @UsePipes(new ValidationPipe)
-    createIdea(@Body() data:IdeaDTO){
+    createIdea(@User("id") user,@Body() data:IdeaDTO){
         this.logger.log(JSON.stringify(data))
-        return this._ideaService.create(data)
+        return this._ideaService.create(user, data)
     }
 
     @Get(':id')
@@ -26,14 +29,16 @@ export class IdeaController {
     }
 
     @Put(':id')
+    @UseGuards(new AuthGuard())
     @UsePipes(new ValidationPipe)
-    updateIdea(@Param("id")id:string, @Body() data:Partial<IdeaDTO>){
+    updateIdea(@Param("id")id:string, @User('id') user:string, @Body() data:Partial<IdeaDTO>){
         this.logger.log(JSON.stringify(data))
-        return this._ideaService.update(id, data)
+        return this._ideaService.update(id, user, data)
     }
 
     @Delete(':id')
-    destroyIdea(@Param("id") id:string){
-        return this._ideaService.destroy(id)
+    @UseGuards(new AuthGuard())
+    destroyIdea(@Param("id") id:string, @User("id") user){
+        return this._ideaService.destroy(id,user)
     }
 }

@@ -12,9 +12,7 @@ export class UserController {
     }
 
     @Get('users')
-    @UseGuards(new AuthGuard())
-    showAllUsers(@User('username') user) {
-        console.log(user)
+    showAllUsers() {
         return this._userService.showAll();
     }
 
