@@ -1,5 +1,6 @@
 import { IsString } from "class-validator"
 import { UserRO } from "src/user/user.dto";
+import { UserEntity } from "src/user/user.entity";
 
 export class IdeaDTO{
     
@@ -18,8 +19,7 @@ export class IdeaRO{
     created:Date;
     idea:string;
     description:string;
-    author:UserRO
-
-
-
+    author:UserRO;
+    upvotes?:number;
+    downvotes?:number;
 }
