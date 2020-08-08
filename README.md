@@ -1,7 +1,7 @@
 # api-nest
 this is an api created with NestJs using TypeORM and Postgres
 
-if you run this project need you install postgres and NestJs
+you need postgres, but soon i gonna add Docker
 # install
 run yarn install
 
