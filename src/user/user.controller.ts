@@ -1,6 +1,6 @@
 import { ValidationPipe } from './../shared/validation.pipe';
 import { UserService } from './user.service';
-import { Controller, Post, Get, Body, UsePipes, UseGuards } from '@nestjs/common';
+import { Controller, Post, Get, Body, UsePipes, UseGuards, Query } from '@nestjs/common';
 import { AuthGuard } from '../shared/auth.guard';
 import { User } from './user.decorator';
 
@@ -12,8 +12,8 @@ export class UserController {
     }
 
     @Get('users')
-    showAllUsers() {
-        return this._userService.showAll();
+    showAllUsers(@Query("page") page:number) {
+        return this._userService.showAll(page);
     }
 
     @Post('login')

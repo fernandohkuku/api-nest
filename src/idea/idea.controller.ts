@@ -1,18 +1,24 @@
 import { ValidationPipe } from './../shared/validation.pipe';
 import { IdeaDTO } from './idea.dto';
-import { Controller, Get, Post, Put, Delete, Body, Param, UsePipes, Logger, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Param, UsePipes, Logger, UseGuards, Query } from '@nestjs/common';
 import { IdeaService } from './idea.service';
 import { AuthGuard } from '../shared/auth.guard';
 import {User} from "../user/user.decorator"
+import { query } from 'express';
 
-@Controller('api/v1/ideas')
+@Controller('api/v1/ideas/')
 export class IdeaController {
     private logger = new Logger('IdeaController')
     constructor(private _ideaService:IdeaService){}
     
     @Get()
-    showAllIdeas(){
-        return this._ideaService.showAll()
+    showAllIdeas(@Query("page") page:number){
+        return this._ideaService.showAll(page)
+    }
+
+    @Get("newest")
+    showNewestIdeas(@Query("page") page:number){
+        return this._ideaService.showAll(page, true )
     }
 
     @Post()
