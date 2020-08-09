@@ -9,12 +9,17 @@ export class LoggingInterceptor implements NestInterceptor{
         _call$: CallHandler
     ):Observable<any>{
         const req = _context.switchToHttp().getRequest();
-        const method = req.method;
-        const url = req.url;
-        const now  = Date.now();
-
-        return _call$.handle().pipe(
-            tap(()=> Logger.log(`${method} ${url} ${Date.now()-now}ms`,_context.getClass().name))
-        )
+        if(req){
+            const method = req.method;
+            const url = req.url;
+            const now  = Date.now();
+    
+            return _call$.handle().pipe(
+                tap(()=> Logger.log(`${method} ${url} ${Date.now()-now}ms`,_context.getClass().name))
+            )
+        }else{
+            return _call$.handle();
+        }
+        
     }
 }
