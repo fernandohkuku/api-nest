@@ -1,4 +1,4 @@
-import { Resolver, Query, Args, ResolveProperty, Parent, Mutation, Context } from "@nestjs/graphql";
+import { Resolver, Query, Args, ResolveProperty, Parent, Mutation, Context, ResolveField } from "@nestjs/graphql";
 import { IdeaService } from "./idea.service";
 import { CommentService } from "src/comment/comment.service";
 import { AuthGuard } from "src/shared/auth.guard";
