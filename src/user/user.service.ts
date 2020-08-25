@@ -33,7 +33,7 @@ export class UserService {
         const user = await this._userRepository.findOne({ where: { username } })
 
         if (!user || !(await user.comparePassword(password))) {
-            throw new HttpException("invalid us ername/password", HttpStatus.BAD_REQUEST)
+            throw new HttpException("invalid username/password", HttpStatus.BAD_REQUEST)
         }
 
         return user.toResponseObject()
