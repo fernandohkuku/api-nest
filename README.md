@@ -5,7 +5,7 @@
 # install
 - Run yarn install
 
-- You have create your .env with the .env.example
+- You have to create your .env with the .env.example
 
 - Informationa about connection database https://docs.nestjs.com/techniques/database
 
