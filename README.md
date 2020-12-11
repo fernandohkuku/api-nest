@@ -1,5 +1,6 @@
 # Api-Nest
 - this is an api created with NestJs using TypeORM and Postgres
+- this API works with the project Ideas App  -> https://github.com/fernandohkuku/ideas-app 
 
 # install
 - Run yarn install
