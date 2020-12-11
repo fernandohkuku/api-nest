@@ -9,7 +9,7 @@
 
 - Informationa about connection database https://docs.nestjs.com/techniques/database
 
-- You have replace the information ormconfig.json using the information of your database
+- You have to replace the information ormconfig.json using the information of your database
 
 ```
 {
