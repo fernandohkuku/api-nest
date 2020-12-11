@@ -18,7 +18,7 @@
     "port":"5432", => default postgres
     "username":"postgres",=> your username
     "password":"admin", => your password
-    "database":"ideas", => you have create the database before run the project.
+    "database":"ideas", => you should create the database before run the project.
     "synchronize":true,
     "logging":true,
     "entities":["dist/**/*.entity{.ts,.js}"]
