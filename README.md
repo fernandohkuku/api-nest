@@ -1,16 +1,16 @@
-# api-nest
-this is an api created with NestJs using TypeORM and Postgres
+# Api-Nest
+- this is an api created with NestJs using TypeORM and Postgres
 
-you need postgres, but soon i gonna add Docker
 # install
-run yarn install
+- Run yarn install
 
-You have create your .env with the .env.example
+- You have create your .env with the .env.example
 
-You have replace the information ormconfig.json using the information of your database
+- Informationa about connection database https://docs.nestjs.com/techniques/database
 
-informationa about connection database https://docs.nestjs.com/techniques/database
+- You have replace the information ormconfig.json using the information of your database
 
+```
 {
     "type":"postgres", => your type can be Mysql, Oracle, Sql
     "host":"localhost",
@@ -22,3 +22,4 @@ informationa about connection database https://docs.nestjs.com/techniques/databa
     "logging":true,
     "entities":["dist/**/*.entity{.ts,.js}"]
 }
+```
